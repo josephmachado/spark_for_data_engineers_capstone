@@ -328,12 +328,11 @@ def run_dbx(spark, url="s3a://datasets-documentation/stackoverflow/parquet", yea
     spark.sql("create database if not exists stackoverflow")
     create_enum_tables(spark)
 
-    post_history_url = "https://huggingface.co/datasets/josephmachado/post_history_sample/resolve/main/part-00000-5f1f8f07-8d7c-4c3c-af29-1b4376c3293f-c000.snappy.parquet"
-    print("PostHistory: downloading data from {post_history_url}")
-    response = requests.get(post_history_url)
-    df_pandas = pd.read_parquet(BytesIO(response.content))
-    spark.createDataFrame(df_pandas).write.mode("overwrite").saveAsTable("stackoverflow.posthistory")
-
+    # post_history_url = "https://huggingface.co/datasets/josephmachado/post_history_sample/resolve/main/part-00000-5f1f8f07-8d7c-4c3c-af29-1b4376c3293f-c000.snappy.parquet"
+    # print("PostHistory: downloading data from {post_history_url}")
+    # response = requests.get(post_history_url)
+    # df_pandas = pd.read_parquet(BytesIO(response.content))
+    # spark.createDataFrame(df_pandas).write.mode("overwrite").saveAsTable("stackoverflow.posthistory")
 
     if year == '*':
         table_urls = {
