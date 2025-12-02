@@ -26,7 +26,7 @@ def transform_upstream_data(spark, upstream_data):
             ViewCount,
             AnswerCount,
             Score,
-            (UNIX_TIMESTAMP(CAST('2008-12-31 23:59:59' AS TIMESTAMP)) - UNIX_TIMESTAMP(CreationDate)) / 3600.0 as hours_since_posted
+            (UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(CreationDate)) / 3600.0 as hours_since_posted
         FROM {fact_posts}
         WHERE PostTypeId = 1  -- Questions only
     ),
